@@ -1,467 +1,174 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Gouxin's Blog - Exploring the world one step at a time</title><meta name="author" content="ContartSL"><meta name="copyright" content="ContartSL"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="Gouxin&#39;s Blog">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="Gouxin&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/199345076?s=400&u=715a8d2900fe2294eca8bc4caa46afdef798f570&v=4">
+<meta property="article:author" content="ContartSL">
+<meta property="article:tag" content="Linux 生活">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/199345076?s=400&u=715a8d2900fe2294eca8bc4caa46afdef798f570&v=4"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Gouxin's Blog",
+  "alternateName": [
+    "Exploring the world one step at a time",
+    "example.com"
+  ],
+  "url": "http://example.com/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.3"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
 
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
   
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
   
-  
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
-
-<meta name="generator" content="Hexo 8.1.1"></head>
-
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Gouxin\'s Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 8.1.1"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/top_2.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/199345076?s=400&amp;u=715a8d2900fe2294eca8bc4caa46afdef798f570&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/%20fas%20fa-home"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/%20fas%20fa-archive"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%20fas%20fa-tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/%20fas%20fa-link"><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/%20fas%20fa-user"><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Gouxin's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/%20fas%20fa-home"><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/%20fas%20fa-archive"><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/%20fas%20fa-tags"><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/link/%20fas%20fa-link"><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/%20fas%20fa-user"><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Gouxin's Blog</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/ContartSL." target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:226798696@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/01/06/linux_start_2/" title="linux学习日记4">linux学习日记4</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-01-06T08:48:58.545Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></span></div><div class="content">linux学习手册 gcc 一个C&#x2F;C++文件要经过预处理，编译，汇编和连接四个步骤才能变成可执行文件  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/01/06/hello_linux_1/" title="linux学习日记2">linux学习日记2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-01-06T08:48:58.544Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></span></div><div class="content">linux学习日记 接下来登场的是，IDE界的保守派 VI编辑器VI编辑器的使用这个实在是太老了所以我们只介绍基础的用法具体参看这个文档vi VIM编辑器我强烈推荐使用vim 或者下面更现代的编辑器如果你使用了桌面，更推荐你试试 vscode clion这种现代集成ide而不是这种编辑器 接下来等登场的是挑战者阵容 neovim &amp; helixneovim helix fresh-editorfresh-editor  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/01/06/linux_start_1/" title="linux学习日记3">linux学习日记3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-01-06T08:48:58.544Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></span></div><div class="content">linux学习手册 从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识我们使用 linux系统 去编写和编译源码，然后再给我们的开放版使用 我们一般情况下使用Ubuntu去做这个事情，所以你需要使用一台linux电脑 </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/01/06/hello_linux/" title="linux学习日记1">linux学习日记1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-01-06T08:48:58.543Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></span></div><div class="content">linux学习手册 从今天开始每周都会更新linux的学习日记  常用命令123gouxin@navi ~&gt; cd /gouxin@navi /&gt;  移动命令， cd + 路径 移动到 / 目录下  12gouxin@navi ~&gt; pwd /home/gouxin  显现当前所在的路径位置  12345678910111213141516gouxin@navi Document&gt; lsC/  document_stm32/  git/  Linux/  python/  rust/  STM32/  Study/gouxin@navi Document&gt; ls -a./  ../  C/  document_stm32/  git/  Linux/  python/  rust/  STM32/  Study/gouxin@navi Document&gt; ls -l总计 0drwxr-xr-x 1 gouxin gouxin 28 12月11日 16:36 C/drwxr-xr-x 1 gouxin gouxin 18 12月19日 23:27...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/01/06/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-01-06T08:48:58.542Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/199345076?s=400&amp;u=715a8d2900fe2294eca8bc4caa46afdef798f570&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">ContartSL</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ContartSL"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/ContartSL." target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:226798696@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">混吃等死每一天</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/06/linux_start_2/" title="linux学习日记4">linux学习日记4</a><time datetime="2026-01-06T08:48:58.545Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/06/hello_linux_1/" title="linux学习日记2">linux学习日记2</a><time datetime="2026-01-06T08:48:58.544Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/06/linux_start_1/" title="linux学习日记3">linux学习日记3</a><time datetime="2026-01-06T08:48:58.544Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/06/hello_linux/" title="linux学习日记1">linux学习日记1</a><time datetime="2026-01-06T08:48:58.543Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/01/06/hello-world/" title="Hello World">Hello World</a><time datetime="2026-01-06T08:48:58.542Z" title="发表于 2026-01-06 16:48:58">2026-01-06</time></div></div></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
       
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-        
-          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
-        
-        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
   
-    <article id="post-linux_start_2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/01/06/linux_start_2/" class="article-date">
-  <time class="dt-published" datetime="2026-01-06T08:48:58.545Z" itemprop="datePublished">2026-01-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/01/06/linux_start_2/">linux学习日记4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
+    <ul class="card-archive-list">
       
-        <h1 id="linux学习手册"><a href="#linux学习手册" class="headerlink" title="linux学习手册"></a><em><strong>linux学习手册</strong></em></h1><hr>
-<h2 id="gcc"><a href="#gcc" class="headerlink" title="gcc"></a>gcc</h2><blockquote>
-<p>一个C&#x2F;C++文件要经过预处理，编译，汇编和连接四个步骤才能变成可执行文件</p>
-</blockquote>
-
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/06/linux_start_2/" data-id="cuidxIuLH5i0JBS3xuxrCeoK_" data-title="linux学习日记4" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello_linux_1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/01/06/hello_linux_1/" class="article-date">
-  <time class="dt-published" datetime="2026-01-06T08:48:58.544Z" itemprop="datePublished">2026-01-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/01/06/hello_linux_1/">linux学习日记2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="linux学习日记"><a href="#linux学习日记" class="headerlink" title="linux学习日记"></a><em><strong>linux学习日记</strong></em></h1><hr>
-<p><del>接下来登场的是，IDE界的保守派</del></p>
-<h2 id="VI编辑器"><a href="#VI编辑器" class="headerlink" title="VI编辑器"></a>VI编辑器</h2><h3 id="VI编辑器的使用"><a href="#VI编辑器的使用" class="headerlink" title="VI编辑器的使用"></a>VI编辑器的使用</h3><p>这个实在是太老了<br>所以我们只介绍基础的用法<br>具体参看这个文档<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1907830562460243827">vi</a></p>
-<h3 id="VIM编辑器"><a href="#VIM编辑器" class="headerlink" title="VIM编辑器"></a>VIM编辑器</h3><p>我强烈推荐使用vim 或者下面更现代的编辑器<br>如果你使用了桌面，更推荐你试试 vscode clion这种现代集成ide<br>而不是这种编辑器</p>
-<p><del>接下来等登场的是挑战者阵容</del></p>
-<h3 id="neovim-helix"><a href="#neovim-helix" class="headerlink" title="neovim &amp; helix"></a>neovim &amp; helix</h3><p><a target="_blank" rel="noopener" href="https://neovim.io/">neovim</a></p>
-<p><a target="_blank" rel="noopener" href="https://helix-editor.cn/">helix</a></p>
-<h3 id="fresh-editor"><a href="#fresh-editor" class="headerlink" title="fresh-editor"></a>fresh-editor</h3><p><a target="_blank" rel="noopener" href="https://github.com/Nsoro-Allan/fresh-editor">fresh-editor</a> </p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/06/hello_linux_1/" data-id="cuidl9_IdDxWTVukIt8d7-QD5" data-title="linux学习日记2" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-linux_start_1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/01/06/linux_start_1/" class="article-date">
-  <time class="dt-published" datetime="2026-01-06T08:48:58.544Z" itemprop="datePublished">2026-01-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/01/06/linux_start_1/">linux学习日记3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="linux学习手册"><a href="#linux学习手册" class="headerlink" title="linux学习手册"></a><em><strong>linux学习手册</strong></em></h1><hr>
-<h2 id="从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识"><a href="#从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识" class="headerlink" title="从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识"></a>从这篇开始，我们才真正进入了linux的学习<br>之前的那些是最必须的前提知识</h2><p>我们使用 linux系统 去编写和编译源码，然后再给我们的开放版使用</p>
-<p>我们一般情况下使用Ubuntu去做这个事情，所以你需要使用一台linux电脑</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/06/linux_start_1/" data-id="cuidYzE1cFRcliXefDsrvwuzF" data-title="linux学习日记3" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello_linux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/01/06/hello_linux/" class="article-date">
-  <time class="dt-published" datetime="2026-01-06T08:48:58.543Z" itemprop="datePublished">2026-01-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/01/06/hello_linux/">linux学习日记1</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="linux学习手册"><a href="#linux学习手册" class="headerlink" title="linux学习手册"></a><em><strong>linux学习手册</strong></em></h1><hr>
-<p>从今天开始每周都会更新linux的学习日记</p>
-<hr>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; <span class="built_in">cd</span> /</span><br><span class="line"></span><br><span class="line">gouxin@navi /&gt;</span><br></pre></td></tr></table></figure>
-
-<pre><code>移动命令， cd + 路径
-移动到 / 目录下
-</code></pre>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; <span class="built_in">pwd</span> </span><br><span class="line">/home/gouxin</span><br></pre></td></tr></table></figure>
-
-<pre><code>显现当前所在的路径位置
-</code></pre>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi Document&gt; <span class="built_in">ls</span></span><br><span class="line">C/  document_stm32/  git/  Linux/  python/  rust/  STM32/  Study/</span><br><span class="line"></span><br><span class="line">gouxin@navi Document&gt; <span class="built_in">ls</span> -a</span><br><span class="line">./  ../  C/  document_stm32/  git/  Linux/  python/  rust/  STM32/  Study/</span><br><span class="line"></span><br><span class="line">gouxin@navi Document&gt; <span class="built_in">ls</span> -l</span><br><span class="line">总计 0</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 28 12月11日 16:36 C/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 18 12月19日 23:27 document_stm32/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 72 12月22日 22:01 git/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin  0 12月11日 16:26 Linux/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 46 12月11日 19:34 python/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin  0 12月11日 16:26 rust/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 30 12月11日 16:44 STM32/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin  0 12月11日 16:26 Study/</span><br></pre></td></tr></table></figure>
-
-<p>ls 显示当前目录的文件<br>    ls -a 显示所有文件包括隐藏文件<br>    ls -l 显示所有文件的属性与权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~/Document&gt; <span class="built_in">mkdir</span> abab</span><br><span class="line">gouxin@navi ~/Document&gt; <span class="built_in">ls</span></span><br><span class="line">abab/  C/  document_stm32/  git/  Linux/  python/  rust/  STM32/  Study/</span><br><span class="line">gouxin@navi ~/Document&gt; <span class="built_in">rmdir</span> abab</span><br><span class="line">gouxin@navi ~/Document&gt; <span class="built_in">ls</span> </span><br><span class="line">C/  document_stm32/  git/  Linux/  python/  rust/  STM32/  Study/</span><br></pre></td></tr></table></figure>
-
-<p>mkdir + [parameter] 新建文件夹<br>rmdir + [parameter] 删除文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi Document&gt; <span class="built_in">touch</span> linux_1.txt </span><br><span class="line">gouxin@navi Document&gt; <span class="built_in">ls</span></span><br><span class="line">C/  document_stm32/  git/  Linux/  linux_1.txt  python/  rust/  STM32/  Study/</span><br><span class="line">gouxin@navi Document&gt; <span class="built_in">rm</span> ./linux_1.txt</span><br><span class="line">gouxin@navi Document&gt; <span class="built_in">ls</span></span><br><span class="line">C/  document_stm32/  git/  Linux/  python/  rust/  STM32/  Study/</span><br></pre></td></tr></table></figure>
-
-<p>touch + [parameter] 新建文件<br>rm + [parameter] 删除文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~/D/g/g/s/movies&gt; <span class="built_in">cat</span> index.md</span><br><span class="line">---</span><br><span class="line">title: movies</span><br><span class="line"><span class="built_in">date</span>: 2025-12-23 00:26:47</span><br><span class="line"><span class="built_in">type</span>: movies</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>cat 命令 将文件内容显示在终端中</p>
-<h2 id="环境变量与shell"><a href="#环境变量与shell" class="headerlink" title="环境变量与shell"></a>环境变量与shell</h2><p>SHELL中所有的命令都会去 PATH路径下查找<br>我们使用echo $PATH去查看路径：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; <span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line">/home/gouxin/.config/Code/User/globalStorage/github.copilot-chat/debugCommand /home/gouxin/.config/Code/User/globalStorage/github.copilot-chat/copilotCli /home/gouxin/.config/Code/User/globalStorage/github.copilot-chat/debugCommand /home/gouxin/.config/Code/User/globalStorage/github.copilot-chat/copilotCli /usr/local/bin /usr/bin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl</span><br></pre></td></tr></table></figure>
-
-<p>如果我们想加入临时路径<br>我们使用下面的命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; <span class="built_in">export</span> PATH:<span class="variable">$PATH</span>: 程序的绝对路径</span><br></pre></td></tr></table></figure>
-
-<p>永久添加路径:<br>通过修改~&#x2F;.bashrc</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>: 程序的绝对路径</span><br></pre></td></tr></table></figure>
-
-<p>或者修改etc&#x2F;envirment</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">: 程序的绝对路径</span><br></pre></td></tr></table></figure>
-
-<h2 id="文件权限与属性"><a href="#文件权限与属性" class="headerlink" title="文件权限与属性"></a>文件权限与属性</h2><h3 id="了解权限"><a href="#了解权限" class="headerlink" title="了解权限"></a>了解权限</h3><p>Linux有一套严格且完整的权限管理系统<br>    我们使用命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi Document&gt; <span class="built_in">ls</span> -l </span><br></pre></td></tr></table></figure>
-
-<pre><code>来查看当前文件夹下所有文件的权限
-</code></pre>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x 1 gouxin gouxin 28 12月11日 16:36 C/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 18 12月19日 23:27 document_stm32/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 72 12月22日 22:01 git/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin  0 12月11日 16:26 Linux/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 46 12月11日 19:34 python/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin  0 12月11日 16:26 rust/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin 30 12月11日 16:44 STM32/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin  0 12月11日 16:26 Study/</span><br></pre></td></tr></table></figure>
-
-<p>第一个字母 d表示 文件夹 如果是 - 表示一般文件格式<br>然后三个字母 rwx 表示，拥有者的权限， 然后三个字母 r-x 表示， 相同用户组的权限， 最后三个字母表示，其他用户的权限</p>
-<pre><code>r w x 三个字母分别是
-    r readable 可读
-    w writeable 可写
-    x  可执行 （~绝对不是因为不会写所以没有~）
-</code></pre>
-<p>所以这个文件的权限是<br>    所有者 可读 可写 可执行<br>    相同用户组 可读 不可写 可执行<br>    其他用户是 可读 不可写 可执行</p>
-<h3 id="更改权限"><a href="#更改权限" class="headerlink" title="更改权限"></a>更改权限</h3><p>chmod 改变文件权限<br>这里我只介绍一种方式，数字</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~/D/g/gouxinblog&gt; <span class="built_in">ls</span> -l </span><br><span class="line">总计 288</span><br><span class="line">-rw-r--r-- 1 gouxin gouxin  29842 12月23日 13:36 _config.butterfly.yml</span><br><span class="line">-rw-r--r-- 1 gouxin gouxin      0 12月22日 22:01 _config.landscape.yml</span><br><span class="line">-rw-r--r-- 1 gouxin gouxin   2672 12月23日 13:37 _config.yml</span><br><span class="line">-rw-r--r-- 1 gouxin gouxin 118685 12月27日 17:49 db.json</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin   5354 12月23日 13:32 node_modules/</span><br><span class="line">-rw-r--r-- 1 gouxin gouxin    834 12月23日 13:32 package.json</span><br><span class="line">-rw-r--r-- 1 gouxin gouxin 133954 12月23日 13:32 package-lock.json</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin    110 12月27日 17:49 public/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin     44 12月22日 22:01 scaffolds/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin     64 12月23日 00:26 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 gouxin gouxin     16 12月22日 22:01 themes/</span><br><span class="line">gouxin@navi ~/D/g/gouxinblog&gt; <span class="built_in">chmod</span> 775 _config.landscape.yml</span><br><span class="line">gouxin@navi ~/D/g/gouxinblog&gt; <span class="built_in">stat</span> _config.landscape.yml</span><br><span class="line">  文件：_config.landscape.yml</span><br><span class="line">  大小：0               块：0          IO 块大小：4096   一般空文件</span><br><span class="line">设备：0,45      Inode: 174120      硬链接：1</span><br><span class="line">权限：(0775/-rwxrwxr-x)  Uid: ( 1000/  gouxin)   Gid: ( 1000/  gouxin)</span><br><span class="line">访问时间：2025-12-22 22:02:35.760994136 +0800</span><br><span class="line">修改时间：2025-12-22 22:01:56.086003364 +0800</span><br><span class="line">变更时间：2025-12-30 17:40:44.763373853 +0800</span><br><span class="line">创建时间：2025-12-22 22:01:56.086003364 +0800</span><br></pre></td></tr></table></figure>
-
-<p>在这里我们用数字代表权限<br>7是全权限 可读，可写，可执行<br>5是没有写入权限<br>1是只有执行权限</p>
-<h2 id="find-grep-命令"><a href="#find-grep-命令" class="headerlink" title="find grep 命令"></a>find grep 命令</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><pre><code>find 是在当前目录下查找文件
-</code></pre>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; find Document/git paru </span><br></pre></td></tr></table></figure>
-
-<p><em>find</em> + <em>目录</em> + <em>文件的名字</em>，也可以使用通配符</p>
-<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><h2 id="网络命令"><a href="#网络命令" class="headerlink" title="网络命令"></a>网络命令</h2><h3 id="ifconfig"><a href="#ifconfig" class="headerlink" title="ifconfig"></a>ifconfig</h3><pre><code>查看网络， 设置ip
-</code></pre>
-<p>此时我的这个网络是<em><strong>有线网络</strong></em> 我们来试一下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; ifconfig</span><br><span class="line"></span><br><span class="line">enp3s0f4u1c2: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.1.4  netmask 255.255.255.0  broadcast 192.168.1.255</span><br><span class="line">        inet6 fe80::8e97:66a6:e23c:162  prefixlen 64  scopeid 0x20&lt;<span class="built_in">link</span>&gt;</span><br><span class="line">        inet6 240e:30a:146:9300:2134:e8bf:54cb:dc8e  prefixlen 64  scopeid 0x0&lt;global&gt;</span><br><span class="line">        ether 9c:69:d3:10:5d:2b  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 811604  bytes 1120551826 (1.0 GiB)</span><br><span class="line">        RX errors 0  dropped 3080  overruns 0  frame 0</span><br><span class="line">        TX packets 292219  bytes 38728563 (36.9 MiB)</span><br><span class="line">        TX errors 0  dropped 14 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">wlp1s0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        ether d6:1f:b7:f4:86:b2  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 4481  bytes 664432 (648.8 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 539  bytes 98781 (96.4 KiB)</span><br><span class="line">        TX errors 0  dropped 46 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
-
-<p>第一个是 <em><strong>有线网络接口</strong></em> 此时显示我在局域网内的ip为 192.168.1.4 子网掩码 255.255.255.0还有很多很多的东西，比如ipv6地址，网关等等，不过对我而言只需要了解ip地址即可</p>
-<p>第三个是 <em><strong>无线网络接口</strong></em> 此时他并没有使用<br>让我们连接到 我的手机个人热点试试</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; ifconfig</span><br><span class="line">enp3s0f4u1c2: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.1.4  netmask 255.255.255.0  broadcast 192.168.1.255</span><br><span class="line">        inet6 fe80::8e97:66a6:e23c:162  prefixlen 64  scopeid 0x20&lt;<span class="built_in">link</span>&gt;</span><br><span class="line">        inet6 240e:30a:146:9300:2134:e8bf:54cb:dc8e  prefixlen 64  scopeid 0x0&lt;global&gt;</span><br><span class="line">        ether 9c:69:d3:10:5d:2b  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 821045  bytes 1128459614 (1.0 GiB)</span><br><span class="line">        RX errors 0  dropped 3206  overruns 0  frame 0</span><br><span class="line">        TX packets 299442  bytes 40546187 (38.6 MiB)</span><br><span class="line">        TX errors 0  dropped 14 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536</span><br><span class="line">        inet 127.0.0.1  netmask 255.0.0.0</span><br><span class="line">        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;</span><br><span class="line">        loop  txqueuelen 1000  (Local Loopback)</span><br><span class="line">        RX packets 10  bytes 540 (540.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 10  bytes 540 (540.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line">wlp1s0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.79.73  netmask 255.255.255.0  broadcast 192.168.79.255</span><br><span class="line">        inet6 fe80::4325:31ca:cc05:e2d  prefixlen 64  scopeid 0x20&lt;<span class="built_in">link</span>&gt;</span><br><span class="line">        ether 5c:61:99:49:<span class="built_in">dd</span>:<span class="built_in">cd</span>  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 4499  bytes 666718 (651.0 KiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 569  bytes 102821 (100.4 KiB)</span><br><span class="line">        TX errors 0  dropped 46 overruns 0  carrier 0  collisions 0</span><br></pre></td></tr></table></figure>
-
-<p>此时我们看到无线网口上也有了网络连接</p>
-<p>啊，由于我对计算机网络的理解有限所以我只能说这些有兴趣的可以看一下下面的up主的视频，他主要做一些网络相关知识的科普<br><a target="_blank" rel="noopener" href="https://space.bilibili.com/37858284?spm_id_from=333.337.search-card.all.click">网络小白_Uncle城</a><br>或者学习伟大的计算机网络这本书<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UT42167xb/?spm_id_from=333.337.search-card.all.click" title="骗你的没有购买链接">购买链接</a><br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1JV411t7ow/?share_source=copy_web&vd_source=803b7088e40e39f3f35ab44967561de8" title="【中科大郑烇、杨坚全套《计算机网络（自顶向下方法 第7版，James F.Kurose，Keith W.Ross）》课程】">课程</a></p>
-<h3 id="ping命令"><a href="#ping命令" class="headerlink" title="ping命令"></a>ping命令</h3><p>ping命令可以查看你和一些网站的连接情况，不过我们一般使用这个命令查看自己是否连接到了公网</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi ~&gt; ping www.bilibili.com</span><br><span class="line">PING www.bilibili.com (240e:b1:9801:206:10::16) 56 字节的数据</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=1 ttl=52 时间=26.0 毫秒</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=2 ttl=51 时间=25.8 毫秒</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=3 ttl=51 时间=26.0 毫秒</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=4 ttl=51 时间=25.9 毫秒</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=5 ttl=51 时间=25.9 毫秒</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=6 ttl=51 时间=26.2 毫秒</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=7 ttl=51 时间=25.9 毫秒</span><br><span class="line">64 字节，来自 240e:b1:9801:206:10::16: icmp_seq=8 ttl=51 时间=25.9 毫秒</span><br><span class="line">^C</span><br><span class="line">--- www.bilibili.com ping 统计 ---</span><br><span class="line">已发送 8 个包， 已接收 8 个包, 0% packet loss, <span class="keyword">time</span> 7009ms</span><br><span class="line">rtt min/avg/max/mdev = 25.845/25.960/26.222/0.106 ms</span><br></pre></td></tr></table></figure>
-<p>嗯，如果大家理解了，ip地址，局域网和域名的关系<br>我想你应该想到了一点事情，对，去找一下你手机的ip<br><em>这里的东西我们以后有机会再详细探讨</em></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wlp1s0: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.79.73  netmask 255.255.255.0  broadcast 192.168.79.255</span><br><span class="line">        inet6 fe80::4325:31ca:cc05:e2d  prefixlen 64  scopeid 0x20&lt;<span class="built_in">link</span>&gt;</span><br><span class="line">        ether 5c:61:99:49:<span class="built_in">dd</span>:<span class="built_in">cd</span>  txqueuelen 1000  (Ethernet)</span><br><span class="line">        RX packets 6191  bytes 3031099 (2.8 MiB)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 842  bytes 157906 (154.2 KiB)</span><br><span class="line">        TX errors 0  dropped 46 overruns 0  carrier 0  collisions 0</span><br><span class="line">gouxin@navi ~&gt; ping 192.168.0.104</span><br><span class="line">PING 192.168.0.104 (192.168.0.104) 56(84) 字节的数据。</span><br><span class="line">64 字节，来自 192.168.0.104: icmp_seq=1 ttl=64 时间=509 毫秒</span><br><span class="line">64 字节，来自 192.168.0.104: icmp_seq=2 ttl=64 时间=9.22 毫秒</span><br><span class="line">64 字节，来自 192.168.0.104: icmp_seq=3 ttl=64 时间=741 毫秒</span><br><span class="line">64 字节，来自 192.168.0.104: icmp_seq=4 ttl=64 时间=8.96 毫秒</span><br><span class="line">64 字节，来自 192.168.0.104: icmp_seq=5 ttl=64 时间=4.35 毫秒</span><br><span class="line">^C</span><br><span class="line">--- 192.168.0.104 ping 统计 ---</span><br><span class="line">已发送 5 个包， 已接收 5 个包, 0% packet loss, <span class="keyword">time</span> 4004ms</span><br><span class="line">rtt min/avg/max/mdev = 4.354/254.559/740.833/311.299 ms</span><br></pre></td></tr></table></figure>
-
-<h2 id="Linux-的文件属性"><a href="#Linux-的文件属性" class="headerlink" title="Linux 的文件属性"></a>Linux 的文件属性</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/wp-content/uploads/2014/06/d0c50-linux2bfile2bsystem2bhierarchy.jpg">linux文件系统框架图片</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gouxin@navi /&gt; <span class="built_in">ls</span></span><br><span class="line">bin@  boot/  dev/  etc/  home/  lib@  lib64@  mnt/  opt/  proc/  root/  run/  sbin@  srv/  sys/  tmp/  usr/  var/</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/06/hello_linux/" data-id="cuidFMVvPHWpR7rqPzO-ORLW0" data-title="linux学习日记1" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2026/01/06/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2026-01-06T08:48:58.542Z" itemprop="datePublished">2026-01-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2026/01/06/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2026/01/06/hello-world/" data-id="cuidC62nrwCnLI5LKk9jdq44N" data-title="Hello World" class="article-share-link"><span class="fa fa-share">Share</span></a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2026/01/06/linux_start_2/">linux学习日记4</a>
-          </li>
-        
-          <li>
-            <a href="/2026/01/06/hello_linux_1/">linux学习日记2</a>
-          </li>
-        
-          <li>
-            <a href="/2026/01/06/linux_start_1/">linux学习日记3</a>
-          </li>
-        
-          <li>
-            <a href="/2026/01/06/hello_linux/">linux学习日记1</a>
-          </li>
-        
-          <li>
-            <a href="/2026/01/06/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2026 John Doe<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.6.4.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
-  </div>
-</body>
-</html>
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">5</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-01-06T09:42:24.139Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By ContartSL</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div><div class="footer_custom_text">I wish you to become your own sun, no need to rely on who's light.<p><a target="_blank" href="https://hexo.io/"><img src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://butterfly.js.org/"><img src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a>&nbsp;<a target="_blank" href="https://www.jsdelivr.com/"><img src="https://img.shields.io/badge/CDN-jsDelivr-orange?style=flat&logo=jsDelivr" title="本站使用JsDelivr为静态资源提供CDN加速"></a> &nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Vervel-brightgreen?style=flat&logo=Vercel" title="本站采用双线部署，默认线路托管于Vercel"></a>&nbsp;<a target="_blank" href="https://vercel.com/ "><img src="https://img.shields.io/badge/Hosted-Coding-0cedbe?style=flat&logo=Codio" title="本站采用双线部署，联通线路托管于Coding"></a>&nbsp;<a target="_blank" href="https://github.com/"><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由Gtihub托管"></a>&nbsp;<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.3"></script><script src="/js/main.js?v=5.5.3"></script><script src="/js/tw_cn.js?v=5.5.3"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
