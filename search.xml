@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>git使用教程</title>
+      <link href="/2026/01/07/git/"/>
+      <url>/2026/01/07/git/</url>
+      
+        <content type="html"><![CDATA[<h1 id="git-使用基础教程"><a href="#git-使用基础教程" class="headerlink" title="git 使用基础教程"></a>git 使用基础教程</h1><hr><p>介绍：   <em>git 是一种开源的分布也是版本控制器，用于管理和处理大小项目，</em><br>        <em>也可以用来做多用户的协同工作</em></p><h2 id="git下载安装"><a href="#git下载安装" class="headerlink" title="git下载安装"></a>git下载安装</h2><h3 id="windwos"><a href="#windwos" class="headerlink" title="windwos"></a>windwos</h3><p>windows 可直接在官网下载<a href="http://git-scm.com/downloads">git</a></p><h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><blockquote><p>Debian &amp;&amp; Ubuntuy<br> sudo apt-get install git</p></blockquote><blockquote><p>Centos &amp;&amp; RedHat<br> sudo yum -y install git-core</p></blockquote><blockquote><p>Fedora<br>sudo yum install git # Fedora 21 之前<br>sudo dnf install git # Fedora 22 之后以及更高版本</p></blockquote><blockquote><p>Arch<br>sudo pacman -S git<br> Arch linux 会遇到 &#x3D;&#x3D;配置文件无法查看的问题&#x3D;&#x3D; 安装 使用 pacman 安装 less 即可解决</p></blockquote><h3 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h3><blockquote><p>使用 Homebrew 安装<br>brew install git<br>如果你想使用 <strong>gui界面</strong><br>还可以安装 git-gui</p></blockquote><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>也可以使用git 源码去构建<br><a href="https://github.com/git/git">git</a></p><h2 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h2><p>git 提供了用户配置的命令，他方便我们使用信息去连接远程仓库<br>在linux在会把配置信息存放在</p><blockquote><p><em>&#x2F;etc&#x2F;gitconfig</em><br><em>~&#x2F;.gitconfig</em><br>windows 一般存放在<br><em>C:\Documents and Settings$USER</em><br>我们使用下面的命令配置git用户信息</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;邮箱地址&quot;</span></span><br></pre></td></tr></table></figure><p>使用了这个命令，你所用的项目都默认是这个提交者的信息<br>使用命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure><p>查看当前的配置信息</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gouxin@myarch ~/D/g/ContartSL_blog&gt; git config --list</span><br><span class="line">user.name=ContartSL</span><br><span class="line">user.email=226798696@qq.com</span><br></pre></td></tr></table></figure><p>为了方便提交远程仓库代码<br>我们可以配置 <strong>ssh</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">&quot;your.email@example.com&quot;</span></span><br></pre></td></tr></table></figure><p>uj它会生成对应的配置文件默认存放在路径 ~&#x2F;.ssh下<br><img src="/img/post_img/ssh_use.png" alt="img"><br>使用命令获取公钥信息</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure><p>然后打开github 或者gitee(我们这里使用github举例子)<br>打开个人信息</p><p><img src="/img/post_img/github_ssh.png" alt="github_ssh"></p><p>新建ssh密钥<br><img src="/img/post_img/github_ssh_use" alt="github_ssh_use"></p><p>然后在key里面输入公钥信息，随意编写一个标题即可</p><p>配置成功后使用 终端</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure><p>如果出现<br>Hi username! You’ve successfully authenticated, but GitHub does not provide shell access<br>信息则配置成功</p><h2 id="git使用"><a href="#git使用" class="headerlink" title="git使用"></a>git使用</h2>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux学习日记4</title>
       <link href="/2026/01/06/linux_start_2/"/>
       <url>/2026/01/06/linux_start_2/</url>
@@ -34,7 +47,7 @@
       <link href="/2026/01/06/linux_start_1/"/>
       <url>/2026/01/06/linux_start_1/</url>
       
-        <content type="html"><![CDATA[<h1 id="linux学习手册"><a href="#linux学习手册" class="headerlink" title="linux学习手册"></a><em><strong>linux学习手册</strong></em></h1><hr><h2 id="从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识"><a href="#从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识" class="headerlink" title="从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识"></a>从这篇开始，我们才真正进入了linux的学习<br>之前的那些是最必须的前提知识</h2><p>我们使用 linux系统 去编写和编译源码，然后再给我们的开放版使用</p><p>我们一般情况下使用Ubuntu去做这个事情，所以你需要使用一台linux电脑</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="linux学习手册"><a href="#linux学习手册" class="headerlink" title="linux学习手册"></a><em><strong>linux学习手册</strong></em></h1><hr><h2 id="从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识"><a href="#从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识" class="headerlink" title="从这篇开始，我们才真正进入了linux的学习之前的那些是最必须的前提知识"></a>从这篇开始，我们才真正进入了linux的学习<br>之前的那些是最必须的前提知识</h2><p>我们使用 linux系统 去编写和编译源码，然后再给我们的开放版使用</p><p>我们一般情况下使用Ubuntu去做这个事情，所以你需要使用一台linux电脑</p><p>我们可以使用虚拟机配置 Ubuntu 也可以直接在物理机上装载一个linux系统</p><p>我们这里使用的是 Ubuntu 18.04</p>]]></content>
       
       
       
